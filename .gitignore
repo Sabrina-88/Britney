@@ -3,6 +3,12 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+bin
+obj
+.vscode
+.vs
+.DS_Store
+
 # User-specific files
 *.rsuser
 *.suo
@@ -447,6 +453,7 @@ $RECYCLE.BIN/
 ##
 ## Visual Studio Code
 ##
+.
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
