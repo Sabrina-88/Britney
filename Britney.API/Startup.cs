@@ -32,7 +32,7 @@ namespace Britney.API
                  context => context.UseSqlite(Configuration.GetConnectionString("Default")) // esse nome Default é um nome que eu escolhi e esta na appsetting.json...Atencao aqui eh string singular
             );
             services.AddControllers();
-            
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Britney.API", Version = "v1" });
@@ -54,6 +54,10 @@ namespace Britney.API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors(x =>
+                                   x.AllowAnyHeader()
+                                   .AllowAnyMethod()
+                                   .AllowAnyOrigin());
 
             app.UseEndpoints(endpoints =>
             {
