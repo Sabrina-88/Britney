@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Britney.API.Models
 {
     public class ShowModel
     {
-        public int EventoId { get; set; }
+        [Key]
+        public int ShowId { get; set; }
         public string Local { get; set; }
         public string DataEvento { get; set; }
         public string Tema { get; set; }

@@ -9,8 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Britney.API.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Britney.API
 {
@@ -27,7 +28,11 @@ namespace Britney.API
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddDbContext<DataContext>(
+                 context => context.UseSqlite(Configuration.GetConnectionString("Default")) // esse nome Default é um nome que eu escolhi e esta na appsetting.json...Atencao aqui eh string singular
+            );
             services.AddControllers();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Britney.API", Version = "v1" });

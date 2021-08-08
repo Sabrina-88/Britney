@@ -6,7 +6,7 @@ namespace Britney.API.Data
 {
     public class DataContext : DbContext
     {
-        
-        public DbSet<ShowModel> Shows { get; set; }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
+        public DbSet<ShowModel> ShowsDataBase { get; set; }
     }
 }
